@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div1>
+        <fieldset>
+            <legend><b>UserName's list</b></legend>
+            <ol>
+                <li>
+                    Food Name = Chips <br />
+                    Expiry Date = November 19th;
+                </li>
+                <li>
+                    Food Name = Chocolates <br />
+                    Expiry Date = November 19th;
+                </li>
+                <li>
+                    Food Name = Icecream <br />
+                    Expiry Date = November 19th;
+                </li>
+                <li>
+                    Food Name =  <br />
+                    Expiry Date = November 19th;
+
+            </ol>
+        </fieldset>
+    </div1>
+   
+
+
+
+    <script>
+        var responseHTML = document.createElement("body");
+        <div id="storage" style="display:none;"> </div>
+        function getBody(content) {
+            var x = content.indexOf("<body");
+            x = content.indexOf(">", x);
+            var y = content.lastIndexOf("</body>");
+            return content.slice(x + 1, y);
+        }
+        function getContent(content, target) {
+            target.innerHTML = getBody(content);
+        }
+        var x = responseHTML.getElementsByTagName("div").namedItem("one");
+        target.innerHTML = x.innerHTML;
+        var y = responseHTML.getElementsByTagName("div").namedItem("ajax");
+        target.innerHTML += y.dyn.value;
+
+        var responseHTML = document.getElementById("storage");
+        var target = document.getElementById("displayed");
+        loadHTML(url, callback, responseHTML, target);
+
+
+
+
+    </script>
+</body>
+</html>
