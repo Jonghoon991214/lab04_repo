@@ -10,11 +10,7 @@
     text-align: right;
 }
 
-img {
-width: 30%
 
- 
-}
 
 
 
@@ -25,26 +21,32 @@ width: 30%
 <button onclick="goBack()">Go Back</button>
 <h1>Input your food here! </h1>
 
-<img src="http://ku.90sjimg.com/element_origin_min_pic/16/06/14/08575f5671b4ca2.jpg" alt="">
-
 
 
 <form>
 
 <h2> <b>Food Item</b></h2>
 
+<select size="1" name="types" id="type">
+          <option value="milk" selected="selected">Milk</option>
+          <option value="yogurt">Yogurt</option>
+          <option value="cheese">Cheese</option>
+		  <option value="butter">Butter</option>
+		  <option value="pudding">Pudding</option>
+		  <option value="cream">Cream</option> 
+		  <option value="icecream">Ice cream</option> 
+        </select>
+<label>Expiry Date: </label><input type="date" id="date" name="date"/>
 
-<input type="text" id="food" placeholder="Food Name" value required="required" /> 
-<input type="text" id="expiry" placeholder="Expiry Date" />
-<input type="submit" value="Add"/> <br/>
+<input type="submit" value="Add"/> 
+<br/>
+<button onclick="myFunction()">+</button>
 
-<input type="text" id="food" placeholder="Food Name" value required="required" /> 
-<input type="text" id="expiry" placeholder="Expiry Date" />
-<input type="submit" value="Add"/> <br/>
 
-<input type="text" id="food" placeholder="Food Name" value required="required" /> 
-<input type="text" id="expiry" placeholder="Expiry Date" />
-<input type="submit" value="Add"/> <br/>
+
+
+
+
 
 <div class="enter">
 <input type="submit" value="Save & Submit" id="enter"/>
