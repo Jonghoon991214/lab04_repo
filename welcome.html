@@ -3,17 +3,43 @@
 <head>
 <title>Welcome!</title>
 </head>
+
+<style>
+
+  #menu {
+        float: center;
+        width: 50%;
+        center: 2.5%;
+        position: relative; top: -160%; transform: translate(0, 160%);
+        display: table;
+        font-size: 1.2rem;
+      }
+
+      #menu ul {
+        display: table-row;
+      }
+      #menu ul li {
+        display: table-cell;
+        margin: 0;
+        text-align: center;
+      }
+
+
+
+
+</style>
 <body>
 
 
 <h1>Welcome back!</h1>
 <p>What would you like to do?</p>
 
-
-<a href="foodinput.html">Input food</a><br/>
-<a href="information_page.html">Information page </a><br/>
-<a href="ReminderPage.html"> Reminder page</a><br/>
-
-
+<nav id="menu">
+<ul>
+<li><a href="foodinput.html">Input food</a></li>
+<li><a href="information_page.html">Information page </a></li>
+<li><a href="ReminderPage.html"> Reminder page</a></li>
+</ul>
+</nav>
 </body>
 </html>
