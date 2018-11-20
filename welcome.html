@@ -1,15 +1,50 @@
-<!doctype html>
-<html lang="en">
-<head>
-<title>Welcome!</title>
-</head>
 
-<style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome!</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
 
-  #menu {
-        float: center;
+      @import url(https://fonts.googleapis.com/css?family=Hind);
+
+      html, body {
+        font-family: 'Hind', sans-serif;
+        background-color: white;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      #header {
+        margin: 2%;
+        background-color: salmon;
+     
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: 100% auto;
+        width: 96%;
+        height: auto;
+      }
+
+      #heighthack {
+          width: 1px;
+          height: 200px;
+          display: inline-block;
+      }
+
+      #logo {
+        float: left;
+        width: 18%;
+        height: auto;
+        left: 1em;
+        top: 0.5em;
+        position: relative;
+      }
+
+      #menu {
+        float: left;
         width: 50%;
-        center: 2.5%;
+        left: 2.5%;
         position: relative; top: -160%; transform: translate(0, 160%);
         display: table;
         font-size: 1.2rem;
@@ -24,29 +59,74 @@
         text-align: center;
       }
 
-h1, p {
+      #menu a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      #socialmedia {
+        float: left;
+        position: relative;
+        left: 2.5%;
+        top: 2em;
+        width: 28%;
+      }
+
+      #socialmedia img {
+        width: 18%;
+        height: auto;
+        margin: 0 2% 0 2%;
+      }
+	  
+	  
+	  
+	  h1 {
 text-align: center;
 }
 
-
-</style>
-<body>
+    </style>
+  </head>
+  <body>
 <button onclick="goBack()">Log out</button>
 
-<h1>Welcome back to Time to Eat!</h1>
-<p>What would you like to do?</p>
+      <div id="header">
 
-<nav id="menu">
-<ul>
-<li><a href="foodinput.html">Input food</a></li>
-<li><a href="information_page.html">Information page </a></li>
-<li><a href="ReminderPage.html"> Reminder page</a></li>
-</ul>
-</nav>
+        <div id="heighthack"></div>
+		
+		
+		
+        <img id="logo"src="https://cdn.xl.thumbs.canstockphoto.com/damaged-textured-food-expired-stamp-seals-food-expired-seal-prints-with-corroded-style-black-clip-art-vector_csp60929867.jpg" alt="logo"/>
 
 
+        <nav id="menu">
+		
+          <ul>
+		  
+            <li><a href="welcome.html">Home</a></li>
+            <li><a href="foodinput.html">Input Food</a></li>
+            <li><a href="information_page.html">Information Page</a></li>
+            <li><a href="ReminderPage.html">Reminder Page</a></li>
 
-<script>
+           
+			
+          </ul>
+		  
+        </nav>
+		
+
+
+
+      </div>
+
+	  
+
+	  <h1>Welcome back to Time to Eat!</h1>
+	  
+	  
+	  
+	  
+	  <script>
 
 function goBack() {
 window.history.back();
@@ -55,5 +135,5 @@ window.history.back();
 
 </script>
 
-</body>
+  </body>
 </html>
