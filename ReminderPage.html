@@ -4,135 +4,144 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+<style>
+    * { background-color : aliceblue;
+        font-size : 19pt;
+       }
+    #go_back{
+        position : absolute;
+        float: right;
+        top : 10%;
+        right : 20%;
+    }
+</style>
 </head>
 <body>
+
     <div1>
         <fieldset>
             <legend><b>UserName's list</b></legend>
             <ol>
                 <li>
                     Food Name = Yogurt <br />
-                    <p id = "date1"></p>
+                    <p id="date1"></p>
+                    <p id="R1"></p>
                 </li>
                 <li>
                     Food Name = Milk<br />
-                    <p id = "date2"> Expiry Date = December 8th;</p>
+                    <p id="date2"></p>
+                    <p id="R2"></p>
                 </li>
                 <li>
                     Food Name = Icecream <br />
-                    <p id = "date3">Expiry Date = December 11th;</p>
+                    <p id="date3"></p>
+                    <p id="R3"></p>
                 </li>
                 <li>
                     Food Name = Butter<br />
-                    <p id = "date4">Expiry Date = December 7th; </p>
+                    <p id="date4"></p>
+                    <p id="R4"></p>
 
             </ol>
         </fieldset>
     </div1>
-   
-<p id="demo"></p>
 
+    <button id="go_back" onclick="goBack()">Go Back</button>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <script>
-        var responseHTML = document.createElement("body");
-        <div id="storage" style="display:none;"> </div>
-        function getBody(content) {
-            var x = content.indexOf("<body");
-            x = content.indexOf(">", x);
-            var y = content.lastIndexOf("</body>");
-            return content.slice(x + 1, y);
+    function goBack() {
+            window.history.back();
         }
-        function getContent(content, target) {
-            target.innerHTML = getBody(content);
-        }
-        var x = responseHTML.getElementsByTagName("div").namedItem("one");
-        target.innerHTML = x.innerHTML;
-        var y = responseHTML.getElementsByTagName("div").namedItem("ajax");
-        target.innerHTML += y.dyn.value;
+    </script>
+    <script type="text/javascript" language="javascript">
 
-        var responseHTML = document.getElementById("storage");
-        var target = document.getElementById("displayed");
-        loadHTML(url, callback, responseHTML, target);
- </script>
-<script>
-/*var date1 = new Date();
-var dd1 = today.setDate(11);
-var mm1 = today.setMonth(2); //January is 0!
-var yyyy1 = today.setFullYear(2018);
+        function CompareDate() {
+            var today = new Date();
+            var date2 = new Date('2018-12-11');
+            document.getElementById("date1").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date2.toLocaleDateString("en-US");
+            //alert(date1.toLocaleDateString("en-US"));
+            //alert(date2.toLocaleDateString("en-US"));
+            var timeDiff = Math.abs(date2.getTime() - today.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-if(dd1<10) {
-    dd1 = '0'+dd1;
-} 
-
-if(mm1<10) {
-    mm1 = '0'+mm1;
-} 
-
-date1 = mm1 + '/' + dd1 + '/' + yyyy1;
-var difference = today - date1;
-document.write(difference);
-</script>*/
-<script type="text/javascript"language="javascript">  
-function CompareDate() {
-        
-            var fromdate = new Date();
-            var dd = fromdate.getDate();
-            var mm = fromdate.getMonth()+1; //January is 0!
-            var yyyy = fromdate.getFullYear();
-            if(dd < 10)
-            {
-	            dd = '0'+ dd;
-            }
-            if(mm < 10)
-            {
-	            mm = '0' + mm;
-            }
-            var fromdate1 = dd+'/'+mm+'/'+yyyy;
-            
-            
-            var todate = new Date();
-            var dd1 = todate.setDate("19");
-            var mm1 = todate.setMonth("11")+1; //January is 0!
-            var yyyy1 = todate.setFullYear("2019");
-            
-			if(dd1 < 10)
-            {
-	            dd1 = '0'+ dd1;
-            }
-            if(mm1 < 10)
-            {
-	            mm1 = '0' + mm1;
-            }
-            var todate1 = dd1 + '/' + mm1 + '/' + yyyy1;
-            alert(todate1);
-            var oneDay = 24*60*60*1000;
-            
-            if((fromdate1 != "") && (todate1 != "")){
-            
-            var fdt1 =  fromdate1.getTime();
-            var tdt1 =  todate1.getTime();
-
-            if(fdt1 > tdt1)
-            {
-                alert("Start date cannot be greater than end date");
-                return false;
-            }
-            else
-            {
-                var diffDays = Math.round(Math.abs((tdt1 - fdt1)/(oneDay)));
-                //document.getElementById("<%=lbldays.ClientID%>").innerHTML = diffDays;
-                //document.getElementById("<%=hdndays.ClientID%>").value = diffDays;
-                return true;
+            if (date2 - today >= 0) {
+                document.getElementById("R1").innerHTML = "Remaining Day is: " + diffDays;
+                $('#R1').css('color', 'blue');
+            } else {
+                document.getElementById("R1").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
+                $('#R1').css('color', 'red');
             }
         }
+        CompareDate();
+    </script>
+
+    <script type="text/javascript" language="javascript">
+
+        function CompareDate() {
+            var today = new Date();
+            var date3 = new Date('2018-8-11');
+            document.getElementById("date2").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date3.toLocaleDateString("en-US");
+            //alert(date1.toLocaleDateString("en-US"));
+            //alert(date2.toLocaleDateString("en-US"));
+            var timeDiff = Math.abs(date3.getTime() - today.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            if (date3 - today >= 0) {
+                document.getElementById("R2").innerHTML = "Remaining Day is: " + diffDays;
+                $('#R2').css('color', 'blue');
+            } else {
+                document.getElementById("R2").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
+                $('#R2').css('color', 'red');
+            }
         }
-   CompareDate();  
+        CompareDate();
+    </script>
+    <script type="text/javascript" language="javascript">
 
+        function CompareDate() {
+            var today = new Date();
+            var date4 = new Date('2018-11-20');
+            document.getElementById("date3").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date4.toLocaleDateString("en-US");
+            //alert(date1.toLocaleDateString("en-US"));
+            //alert(date2.toLocaleDateString("en-US"));
+            var timeDiff = Math.abs(date4.getTime() - today.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
+            if (date4 - today >= 0) {
+                // document.getElementById("R1").innerHTML = diffDays;
 
+                document.getElementById("R3").innerHTML = "Remaining Day is: " + diffDays;
+                $('#R3').css('color', 'blue');
+            } else {
+                document.getElementById("R3").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
+                $('#R3').css('color', 'red');
+            }
+        }
+        CompareDate();
+    </script>
+    <script type="text/javascript" language="javascript">
 
-</script>
+        function CompareDate() {
+            var today = new Date();
+            var date5 = new Date('2018-11-25');
+            document.getElementById("date4").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date5.toLocaleDateString("en-US");
+            //alert(date1.toLocaleDateString("en-US"));
+            //alert(date2.toLocaleDateString("en-US"));
+            var timeDiff = Math.abs(date5.getTime() - today.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-   
+            if (date5 - today >= 0) {
+                // document.getElementById("R1").innerHTML = diffDays;
+                document.getElementById("R4").innerHTML = "Remaining Day is: " + diffDays;
+                $('#R4').css('color', 'blue');
+            } else {
+                document.getElementById("R4").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
+                $('#R4').css('color', 'red');
+            }
+        }
+        CompareDate();
+    </script>
 </body>
-</html>
+</html >
