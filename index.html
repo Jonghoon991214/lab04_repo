@@ -1,28 +1,84 @@
+<html>
 
-<!doctype html>
-<html lang="en">
 <head>
-<title>Homepage</title>
+
+<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAisdo7nPzUK3LSijFnqml9YX6UVLNFwOQ",
+    authDomain: "nov-15.firebaseapp.com",
+    databaseURL: "https://nov-15.firebaseio.com",
+    projectId: "nov-15",
+    storageBucket: "nov-15.appspot.com",
+    messagingSenderId: "665129756269"
+  };
+  firebase.initializeApp(config);
+</script>
+
 </head>
 
 <body>
-<h1>Welcome to Quick Eating! </h1>
+
+<script>var ui = new firebaseui.auth.AuthUI(firebase.auth());</script>
+
+<!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+<h1>Welcome to Time to Eat!</h1>
+<div id="firebaseui-auth-container">Plese log in with Email</div>
+<div id="loader">Loading login screen</div>
+
+<script>
+var uiConfig = {
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return true;
+    },
+    uiShown: function() {
+      // The widget is rendered.
+      // Hide the loader.
+      document.getElementById('loader').style.display = 'none';
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+  signInFlow: 'popup',
+  signInSuccessUrl: 'welcome.html',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+   
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  
+  ],
+  // Terms of service url.
+  tosUrl: 'welcome.html',
+  // Privacy policy url.
+  privacyPolicyUrl: 'welcome.html'
+};
+
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
 
 
-<form>
-<fieldset>
-<legend> <b>Sign In Here</b></legend>
-<input type="text" id="taylor" placeholder="User Name" value required="required"
-pattern="[A-Za]{8,20}"/> <br/>
-<input type="text" id="password" placeholder="Password" pattern=[A-Za]{10,20}/> <br/>
+</script>
 
 
-<input type="submit" value="Submit"/>
 
-<p> or</p>
-<input type="submit" value="Sign Up"/>
 
-</fieldset>
-</form>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
