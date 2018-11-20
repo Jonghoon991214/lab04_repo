@@ -9,10 +9,9 @@
 .enter {
     text-align: right;
 }
+#input1{
 
-
-
-
+}
 
 </style>
 
@@ -26,22 +25,23 @@
 <form>
 
 <h2> <b>Food Item</b></h2>
+<div1 id="demo">
+    <select size="1" name="types" id="type">
+        <option value="milk" selected="selected">Milk</option>
+        <option value="yogurt">Yogurt</option>
+        <option value="cheese">Cheese</option>
+        <option value="butter">Butter</option>
+        <option value="pudding">Pudding</option>
+        <option value="cream">Cream</option>
+        <option value="icecream">Ice cream</option>
+    </select>
+    <label id="input1">Expiry Date: </label><input type="date" id="date" name="date" />
 
-<select size="1" name="types" id="type">
-          <option value="milk" selected="selected">Milk</option>
-          <option value="yogurt">Yogurt</option>
-          <option value="cheese">Cheese</option>
-		  <option value="butter">Butter</option>
-		  <option value="pudding">Pudding</option>
-		  <option value="cream">Cream</option> 
-		  <option value="icecream">Ice cream</option> 
-        </select>
-<label>Expiry Date: </label><input type="date" id="date" name="date"/>
-
-<input type="submit" value="Add"/> 
-<br/>
-<button onclick="myFunction()">+</button>
-
+    <input type="submit" value="Add" />
+    
+    <button onclick="myFunction()">+</button>
+</div1>
+    <p id="demo"></p>
 
 
 
@@ -50,8 +50,15 @@
 
 <div class="enter">
 <input type="submit" value="Save & Submit" id="enter"/>
+
 </div>
 
 </form>
+    <script>
+        function myFunction() {
+            
+}
+
+    </script>
 </body>
 </html>

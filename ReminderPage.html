@@ -11,26 +11,26 @@
             <legend><b>UserName's list</b></legend>
             <ol>
                 <li>
-                    Food Name = Chips <br />
-                    Expiry Date = November 19th;
+                    Food Name = Yogurt <br />
+                    <p id = "date1"></p>
                 </li>
                 <li>
-                    Food Name = Chocolates <br />
-                    Expiry Date = November 19th;
+                    Food Name = Milk<br />
+                    <p id = "date2"> Expiry Date = December 8th;</p>
                 </li>
                 <li>
                     Food Name = Icecream <br />
-                    Expiry Date = November 19th;
+                    <p id = "date3">Expiry Date = December 11th;</p>
                 </li>
                 <li>
-                    Food Name =  <br />
-                    Expiry Date = November 19th;
+                    Food Name = Butter<br />
+                    <p id = "date4">Expiry Date = December 7th; </p>
 
             </ol>
         </fieldset>
     </div1>
    
-
+<p id="demo"></p>
 
 
     <script>
@@ -53,10 +53,86 @@
         var responseHTML = document.getElementById("storage");
         var target = document.getElementById("displayed");
         loadHTML(url, callback, responseHTML, target);
+ </script>
+<script>
+/*var date1 = new Date();
+var dd1 = today.setDate(11);
+var mm1 = today.setMonth(2); //January is 0!
+var yyyy1 = today.setFullYear(2018);
+
+if(dd1<10) {
+    dd1 = '0'+dd1;
+} 
+
+if(mm1<10) {
+    mm1 = '0'+mm1;
+} 
+
+date1 = mm1 + '/' + dd1 + '/' + yyyy1;
+var difference = today - date1;
+document.write(difference);
+</script>*/
+<script type="text/javascript"language="javascript">  
+function CompareDate() {
+        
+            var fromdate = new Date();
+            var dd = fromdate.getDate();
+            var mm = fromdate.getMonth()+1; //January is 0!
+            var yyyy = fromdate.getFullYear();
+            if(dd < 10)
+            {
+	            dd = '0'+ dd;
+            }
+            if(mm < 10)
+            {
+	            mm = '0' + mm;
+            }
+            var fromdate1 = dd+'/'+mm+'/'+yyyy;
+            
+            
+            var todate = new Date();
+            var dd1 = todate.setDate("19");
+            var mm1 = todate.setMonth("11")+1; //January is 0!
+            var yyyy1 = todate.setFullYear("2019");
+            
+			if(dd1 < 10)
+            {
+	            dd1 = '0'+ dd1;
+            }
+            if(mm1 < 10)
+            {
+	            mm1 = '0' + mm1;
+            }
+            var todate1 = dd1 + '/' + mm1 + '/' + yyyy1;
+            alert(todate1);
+            var oneDay = 24*60*60*1000;
+            
+            if((fromdate1 != "") && (todate1 != "")){
+            
+            var fdt1 =  fromdate1.getTime();
+            var tdt1 =  todate1.getTime();
+
+            if(fdt1 > tdt1)
+            {
+                alert("Start date cannot be greater than end date");
+                return false;
+            }
+            else
+            {
+                var diffDays = Math.round(Math.abs((tdt1 - fdt1)/(oneDay)));
+                //document.getElementById("<%=lbldays.ClientID%>").innerHTML = diffDays;
+                //document.getElementById("<%=hdndays.ClientID%>").value = diffDays;
+                return true;
+            }
+        }
+        }
+   CompareDate();  
 
 
 
 
-    </script>
+</script>
+
+   
 </body>
 </html>
