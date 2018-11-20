@@ -28,10 +28,11 @@
 
 <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
-<h1>Welcome to Time to Eat!</h1>
+	<div id="m"><img id="logo"src="Group 4.png" alt="logo"/>
+	 <h1> Welcome to Time to Eat!</h1>
 <div id="firebaseui-auth-container">Plese log in with Email</div>
-<div id="loader">Loading login screen</div>
-
+<div id="loader"></div>
+</div>
 <script>
 var uiConfig = {
   callbacks: {
@@ -72,7 +73,11 @@ ui.start('#firebaseui-auth-container', uiConfig);
 
 
 
-
+<style>
+#m {
+text-align: center;
+}
+</style>
 
 
 
