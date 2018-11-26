@@ -14,6 +14,56 @@
             height: auto;
         }
 
+        /* The Modal (background) */
+        .popup {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /
+
     </style>
 
 </head>
@@ -24,17 +74,28 @@
 
     <h1> Dairy products </h1>
 
-    <img class="resize" src="milk.jpg" alt="Milk">
+    <img class="resize" src="milk.jpg" alt="Milk" onclick="openPopUp('milk')">
     <b>
         <p>Milk:</p>
     </b>
     <p>Subtract the current date from the sell-by date, and add five</p>
+
+    <!--    //cheese-->
     <img class="resize" src="cheese.jpg" alt="Cheese">
     <b>
         <p>Cheese:</p>
     </b>
-    <p>Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.</p>
-    <p>1-2 months in the fridge usually.</p>
+    <ul>
+        <li>
+            Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.
+        </li>
+        <li>
+            1-2 months in the fridge usually.
+        </li>
+
+    </ul>
+
+    <!--    //butter-->
     <img class="resize" src="butter.jpg" alt="Butter">
     <b>
         <p>Butter:</p>
@@ -42,20 +103,76 @@
     <p>6-9 Months for the exipriary date</p>
     <p>It needs to be stored property as butter needs to be stay away from
         strong odors.</p>
+
+    <!--    //yogurt-->
     <img class="resize" src="yogurt.jpg" alt="yogurt">
     <b>
         <p>Yogurt:</p>
     </b>
-    <p>5 to 7 days after opening</p>
+    <p>"5 to 7 days after opening"</p>
     <p>1 to 2 weeks after "sell by date"</p>
 
+    <!--    //popup-->
+    <div id="popup" class="popup">
+        <!-- Modal content -->
+        <div class="popup-content">
+            <span class="close" onclick="closePopUp()">&times;</span>
+            <b>
+                <p id='productName'></p>
+            </b>
+            <ul id="productDescription">
+
+            </ul>
+        </div>
+    </div>
+
     <script>
+        var popup = document.getElementById('popup');
+        var productDescription = document.getElementById('productDescription');
+
         function goBack() {
             window.history.back();
         }
 
-    </script>
+        function openPopUp(productName) {
+            var milk = ["Subtract the current date from the sell-by date, and add five"];
+            var cheese = ["Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.", " 1-2 months in the fridge usually."];
+            var butter = ["6-9 Months for the exipriary date", "It needs to be stored property as butter needs to be stay away from strong odors."];
+            var yogurt = ["5 to 7 days after opening", "1 to 2 weeks after sell by date"];
+            
+            var description=[];
+            debugger
+            switch (productName) {
+                    case "milk":
+                    description = milk;
+                    break;
+                    case "cheese":
+                    description = cheese;
+                    break;
+                    case "butter":
+                    description = butter;
+                    break;
+                    case "yogurt":
+                    description = yogurt;
+                    break;
+        
+                    }
 
+            document.getElementById('productName').innerHTML = productName;
+
+            for (var i = 0; i < description.length; ++i) {
+                var item = document.createElement('li');
+                document.getElementById('productDescription').appendChild(item.innerHTML = description[i]);
+            }
+            
+            popup.style.display = "block";
+        }
+
+        function closePopUp() {
+            popup.style.display = "none";
+        }
+
+    </script>
 
 </body>
 
