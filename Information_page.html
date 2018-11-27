@@ -2,17 +2,18 @@
 <html lang="en" dir="ltr" class="sid-plesk">
 
 <head>
-    <title>Time To Eat Information Page</title>
+    <title>Time To Eat: Information Page</title>
     <style>
         .resize {
-            width: 400px;
+            width: 350px;
             height: auto;
         }
 
-        .resize {
-            width: 300px;
+        .resize1 {
+            width: 250px;
             height: auto;
         }
+        
 
         /* The Modal (background) */
         .popup {
@@ -73,45 +74,28 @@
     <button onclick="goBack()">Go Back</button>
 
     <h1> Dairy products </h1>
-
+    
+    <!--    //milk-->
     <img class="resize" src="milk.jpg" alt="Milk" onclick="openPopUp('milk')">
-    <b>
-        <p>Milk:</p>
-    </b>
-    <p>Subtract the current date from the sell-by date, and add five</p>
-
+    
     <!--    //cheese-->
-    <img class="resize" src="cheese.jpg" alt="Cheese">
-    <b>
-        <p>Cheese:</p>
-    </b>
-    <ul>
-        <li>
-            Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.
-        </li>
-        <li>
-            1-2 months in the fridge usually.
-        </li>
-
-    </ul>
-
+    <img class="resize" src="cheese.png" alt="Cheese" onclick="openPopUp('cheese')">
+    
     <!--    //butter-->
-    <img class="resize" src="butter.jpg" alt="Butter">
-    <b>
-        <p>Butter:</p>
-    </b>
-    <p>6-9 Months for the exipriary date</p>
-    <p>It needs to be stored property as butter needs to be stay away from
-        strong odors.</p>
-
+    <img class="resize" src="butter.png" alt="Butter" onclick="openPopUp('butter')">
+    
     <!--    //yogurt-->
-    <img class="resize" src="yogurt.jpg" alt="yogurt">
-    <b>
-        <p>Yogurt:</p>
-    </b>
-    <p>"5 to 7 days after opening"</p>
-    <p>1 to 2 weeks after "sell by date"</p>
-
+    <img class="resize" src="yogurt.jpg" alt="yogurt" onclick="openPopUp('yogurt')">
+    
+    <!--    //cream-->
+    <img class="resize" src="cream.png" alt="cream" onclick="openPopUp('cream')">
+    
+    <!--    //ice cream-->
+    <img class="resize1" src="ice_cream.png" alt="ice cream" onclick="openPopUp('ice_cream')">
+    
+    <!--    //pudding-->
+    <img class="resize" src="pudding.png" alt="pudding" onclick="openPopUp('pudding')">
+    
     <!--    //popup-->
     <div id="popup" class="popup">
         <!-- Modal content -->
@@ -133,38 +117,51 @@
         function goBack() {
             window.history.back();
         }
-
+            
         function openPopUp(productName) {
             var milk = ["Subtract the current date from the sell-by date, and add five"];
             var cheese = ["Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.", " 1-2 months in the fridge usually."];
             var butter = ["6-9 Months for the exipriary date", "It needs to be stored property as butter needs to be stay away from strong odors."];
             var yogurt = ["5 to 7 days after opening", "1 to 2 weeks after sell by date"];
+            var cream = [""];
+            var ice_cream = [""];
+            var pudding = [""];
+
+            var description = [];
             
-            var description=[];
-            debugger
             switch (productName) {
-                    case "milk":
-                    description = milk;
+                case "milk":
+                    var description = milk;
                     break;
-                    case "cheese":
-                    description = cheese;
+                case "cheese":
+                    var description = cheese;
                     break;
-                    case "butter":
-                    description = butter;
+                case "butter":
+                    var description = butter;
                     break;
-                    case "yogurt":
-                    description = yogurt;
+                case "yogurt":
+                    var description = yogurt;
                     break;
-        
-                    }
+                case "cream":
+                    var description = cream;
+                    break;
+                case "ice_cream":
+                    var description = ice_cream;
+                    break;
+                case "pudding":
+                    var description = pudding;
+                    break;
 
-            document.getElementById('productName').innerHTML = productName;
-
-            for (var i = 0; i < description.length; ++i) {
-                var item = document.createElement('li');
-                document.getElementById('productDescription').appendChild(item.innerHTML = description[i]);
             }
             
+            document.getElementById('productName').innerHTML = productName;
+            
+            for (var i = 0; i < description.length; ++i) {
+                var item = document.createElement('li');
+                item.innerHTML = description[i];
+                productDescription.append(item);
+            }
+
             popup.style.display = "block";
         }
 
