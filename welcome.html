@@ -91,6 +91,12 @@ height: 200px;
 }
 
     </style>
+	
+	
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+	
   </head>
   <body>
 <button onclick="goBack()">Log out</button>
@@ -140,7 +146,19 @@ window.history.back();
 }
 
 
+
+
+
 </script>
+
+
+    <script src="setup_firebase.js"></script>
+
+    <!-- Customized banner for authenticated users, with quote from database --> 
+   
+    <script src="greetingQuote.js"></script>
+
+
 
   </body>
 </html>
