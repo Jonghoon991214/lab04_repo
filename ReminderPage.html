@@ -63,14 +63,14 @@
             window.history.back();
         }
     </script>
+
     <script type="text/javascript" language="javascript">
 
         function CompareDate() {
             var today = new Date();
             var date2 = new Date('2018-12-11');
             document.getElementById("date1").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date2.toLocaleDateString("en-US");
-            //alert(date1.toLocaleDateString("en-US"));
-            //alert(date2.toLocaleDateString("en-US"));
+           
             var timeDiff = Math.abs(date2.getTime() - today.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 

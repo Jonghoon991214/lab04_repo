@@ -80,6 +80,29 @@
 
      }*/
     </script>
+	<script>
+	var addToFoodList = document.querySelector('#add-to-foodlist');
+var foodlistItem = document.querySelector('#foodlist-item');
+var foodlist = document.querySelector('#foodlist');
+addToFoodList.addEventListener('submit', function (event) {
+
+	// Don't submit the form
+	event.preventDefault();
+
+	// Ignore it if the wishlist item is empty
+	if (foodlistItem.value.length < 1) return;
+
+	// Add item to wishlist
+	foodlist.innerHTML += '<li>' + foodlistItem.value + '</li>';
+
+	// Clear input
+	foodlistItem.value = '';
+
+	// Save the list to localStorage
+	localStorage.setItem('foodlistItems', wishlist.innerHTML);
+
+}, false);
+	</script>
 
 
 
