@@ -23,22 +23,63 @@
 <form>
 
 
-<select id="list">
-          <option value="milk" selected="selected">Milk</option>
-          <option value="yogurt">Yogurt</option>
-          <option value="cheese">Cheese</option>
-		  <option value="butter">Butter</option>
-		  <option value="pudding">Pudding</option>
-		  <option value="cream">Cream</option> 
-		  <option value="icecream">Ice cream</option> 
-        </select>
-<label>Expiry Date: </label><input type="date" id="date" name="date"/>
-
-<input type="submit" value="Add"/> 
-<button onclick="myFunction()">+</button>
-<br/>
+    <select id="list">
+        <option value="milk" id="s1" selected="selected">Milk</option>
+        <option value="yogurt" id="s2">Yogurt</option>
+        <option value="cheese" id="s3">Cheese</option>
+        <option value="butter" id="s4">Butter</option>
+        <option value="pudding" id="s5">Pudding</option>
+        <option value="cream" id="s6">Cream</option>
+        <option value="icecream" id="s7">Ice cream</option>
+    </select>
+    <label>Expiry Date: </label><input type="date" id="date" name="date" />
 
 
+    <button id="add" onclick="myFunction()">+</button>
+    <button id="remove" onclick="myFunction()">-</button>
+    <br />
+    <script>
+        document.getElementById("add").addEventListener("click", storeList);
+        function storeList() {
+            //for (i = 0; i < 10; i++) {
+            var all = new Array();
+           /* if (s1 = ) {
+                
+                all[0] = "Milk";
+            }*/
+            if ($("select:contains('Milk')") ) {
+               
+                all[0] = "Yogurt";
+            }
+                        if (s3 = document.getElementById('list').id) {
+                            
+                            all[0] = "Cheese";
+                        }
+                            alert(all[0]);
+
+                        } 
+                    
+           // }
+
+            </script>
+    <script>
+            document.getElementById("remove").addEventListener("click", removeList);
+        function removeList() {
+            alert("remove");
+        }
+        /*function storeList() {
+            if (document.getElementById("list").getElementByName(option) = "milk") {
+                alert("Milk");
+            };
+        }*/
+        /* var list = new Array();
+         for (i = 0; i < 9; i++) {
+             set = a;
+             a++;
+         }
+
+     }*/
+    </script>
 
 
 
@@ -47,14 +88,15 @@
 
 
 
-<form action="/action_page.php" method="get">
 
-  
- <button type="submit" formaction="ReminderPage.html">Save & Submit</button>
-</form>
+    <form action="/action_page.php" method="get">
 
 
-</div>
+        <button type="submit" formaction="ReminderPage.html">Save & Submit</button>
+    </form>
+
+
+    
 </form>
 
     <script>
