@@ -2,7 +2,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="stylesheet" type="text/css" href="app.css" />
 <title>Food Input</title>
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>    
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 </head>
 
 <style>
@@ -14,96 +19,70 @@
 </style>
 
 <body>
+<script src="setup_firebase.js"></script>
 <button onclick="goBack()">Go Back</button>
 
 <h1>Input your food here! </h1>
 
 
 
-<form>
+<form id ="select">
 
 
-    <select id="list">
-        <option value="milk" id="s1" selected="selected">Milk</option>
-        <option value="yogurt" id="s2">Yogurt</option>
-        <option value="cheese" id="s3">Cheese</option>
-        <option value="butter" id="s4">Butter</option>
-        <option value="pudding" id="s5">Pudding</option>
-        <option value="cream" id="s6">Cream</option>
-        <option value="icecream" id="s7">Ice cream</option>
+    foodName : <select>
+        <option value="milk" id="foodName" name = "foodName" selected="selected">Milk</option>
+        <option value="yogurt" id="foodName" name = "foodName">Yogurt</option>
+        <option value="cheese" id="foodName" name = "foodName">Cheese</option>
+        <option value="butter" id="foodName" name = "foodName">Butter</option>
+        <option value="pudding" id="foodName" name = "foodName">Pudding</option>
+        <option value="cream" id="foodName" name = "foodName">Cream</option>
+        <option value="icecream" id="foodName" name = "foodName">Ice cream</option>
     </select>
-    <label>Expiry Date: </label><input type="date" id="date" name="date" />
+	<button id="add" onclick="myFunction()">+</button>
+	</form>
+	<form id= "date">
+     expiryDate : <label id ="expiryDate" name ="expiryDate">Expiry Date: </label><input type="date" id="date" name="date" />
+</form>
 
 
-    <button id="add" onclick="myFunction()">+</button>
-    <button id="remove" onclick="myFunction()">-</button>
+
+<script>
+   document.getElementById('select').addEventListener('add', submitForm);
+   function submitForm(e) {
+       e.preventDefault();
+       var foodName = document.getElementById("foodName").value;
+       var expiryDate = document.getElementById("expiryDate").value;
+       //console.log(set);
+       //console.log(interest);
+       var firebase = app_firebase;
+       firebase.auth().onAuthStateChanged(function(user){
+          console.log(foodName);
+          console.log(expiryDate);
+          console.log(user.uid);
+          firebase.database().ref('users/'+user.uid).update( {
+            "foodName": foodName,
+            "expirydate": expirydate
+          });
+       });
+       window.location.href="foodinput.html";
+   };
+   var database = firebase.database();
+   </script>
+<script>
+    
+    <button id="remove" onclick="myFunction1()">-</button>
     <br />
+	</script>
     <script>
         document.getElementById("add").addEventListener("click", storeList);
-        function storeList() {
-            //for (i = 0; i < 10; i++) {
-            var all = new Array();
-           /* if (s1 = ) {
-                
-                all[0] = "Milk";
-            }*/
-            if ($("select:contains('Milk')") ) {
-               
-                all[0] = "Yogurt";
-            }
-                        if (s3 = document.getElementById('list').id) {
-                            
-                            all[0] = "Cheese";
-                        }
-                            alert(all[0]);
-
-                        } 
-                    
-           // }
-
-            </script>
+	</script>
     <script>
             document.getElementById("remove").addEventListener("click", removeList);
         function removeList() {
             alert("remove");
         }
-        /*function storeList() {
-            if (document.getElementById("list").getElementByName(option) = "milk") {
-                alert("Milk");
-            };
-        }*/
-        /* var list = new Array();
-         for (i = 0; i < 9; i++) {
-             set = a;
-             a++;
-         }
-
-     }*/
+      
     </script>
-	<script>
-	var addToFoodList = document.querySelector('#add-to-foodlist');
-var foodlistItem = document.querySelector('#foodlist-item');
-var foodlist = document.querySelector('#foodlist');
-addToFoodList.addEventListener('submit', function (event) {
-
-	// Don't submit the form
-	event.preventDefault();
-
-	// Ignore it if the wishlist item is empty
-	if (foodlistItem.value.length < 1) return;
-
-	// Add item to wishlist
-	foodlist.innerHTML += '<li>' + foodlistItem.value + '</li>';
-
-	// Clear input
-	foodlistItem.value = '';
-
-	// Save the list to localStorage
-	localStorage.setItem('foodlistItems', wishlist.innerHTML);
-
-}, false);
-	</script>
-
 
 
 
@@ -115,19 +94,13 @@ addToFoodList.addEventListener('submit', function (event) {
     <form action="/action_page.php" method="get">
 
 
-        <button type="submit" formaction="ReminderPage.html">Save & Submit</button>
+        <button type="submit" formaction="foodinput.html">Save & Submit</button>
     </form>
 
 
     
 </form>
 
-    <script>
-        function myFunction() {
-            
-}
-
-    </script>
 
 
 
@@ -138,8 +111,8 @@ window.history.back();
 }
 
 
-</script>
 
+</script>
 
 </body>
 </html>

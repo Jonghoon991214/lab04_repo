@@ -3,7 +3,13 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="app.css" />
+	<title>Reminder</title>
+	 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>    
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+	
+</head>
 <style>
     * { background-color : aliceblue;
         font-size : 19pt;
@@ -23,6 +29,7 @@
 </style>
 </head>
 <body>
+<script src="setup_firebase.js"></script>
 <header>
 <img id = logo src = "./Group 4.png">
 </header>
@@ -63,7 +70,11 @@
             window.history.back();
         }
     </script>
+<script>
+var taste = localStorage.getItem('milk');
+alert(taste);
 
+</script>
     <script type="text/javascript" language="javascript">
 
         function CompareDate() {
