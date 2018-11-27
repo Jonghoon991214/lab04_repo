@@ -72,8 +72,39 @@
     
     <button id="remove" onclick="myFunction1()">-</button>
     <br />
+<<<<<<< HEAD
 	</script>
+=======
+	
+	
+	
+	
+	
+>>>>>>> 334589c73f91c58be64caf406680dca381bb8a1e
     <script>
+	
+	
+
+	
+	(function(){
+
+    var firebase = app_firebase;
+
+    // for the currently authenticated firebase user
+    // create your own "user" node in the datebase using 
+    // the firebase generated "uid"
+
+    firebase.auth().onAuthStateChanged(function(user){
+        firebase.database().ref("users/"+user.uid).update(
+	{
+         "name":user.displayName, 
+         "email":user.email
+        });
+    });
+})()
+
+	
+	
         document.getElementById("add").addEventListener("click", storeList);
 	</script>
     <script>
@@ -88,7 +119,7 @@
 
 
 
-
+   <script src="setup_firebase.js"></script>
 
 
     <form action="/action_page.php" method="get">
@@ -113,6 +144,7 @@ window.history.back();
 
 
 </script>
+
 
 </body>
 </html>
