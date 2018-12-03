@@ -1,149 +1,171 @@
-
+﻿
 <!doctype html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <link rel="stylesheet" type="text/css" href="app.css" />
-<title>Food Input</title>
-<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="app.css" />
+    <title>Food Input</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 </head>
 
-<style>
-.enter {
-    text-align: right;
-}
 
-
-</style>
 
 <body>
-<script src="setup_firebase.js"></script>
-<button onclick="goBack()">Go Back</button>
+    <script src="setup_firebase.js"></script>
+    <button onclick="goBack()">Go Back</button>
 
-<h1>Input your food here! </h1>
-
-
-
-<form id ="select">
-
-
-    foodName : <select>
-        <option value="milk" id="foodName" name = "foodName" selected="selected">Milk</option>
-        <option value="yogurt" id="foodName" name = "foodName">Yogurt</option>
-        <option value="cheese" id="foodName" name = "foodName">Cheese</option>
-        <option value="butter" id="foodName" name = "foodName">Butter</option>
-        <option value="pudding" id="foodName" name = "foodName">Pudding</option>
-        <option value="cream" id="foodName" name = "foodName">Cream</option>
-        <option value="icecream" id="foodName" name = "foodName">Ice cream</option>
-    </select>
-	<button id="add" onclick="myFunction()">+</button>
-	</form>
-	<form id= "date">
-     expiryDate : <label id ="expiryDate" name ="expiryDate">Expiry Date: </label><input type="date" id="date" name="date" />
-</form>
+    <h1>Input your food here! </h1>
 
 
 
-<script>
-   document.getElementById('select').addEventListener('add', submitForm);
-   function submitForm(e) {
-       e.preventDefault();
-       var foodName = document.getElementById("foodName").value;
-       var expiryDate = document.getElementById("expiryDate").value;
-       //console.log(set);
-       //console.log(interest);
-       var firebase = app_firebase;
-       firebase.auth().onAuthStateChanged(function(user){
-          console.log(foodName);
-          console.log(expiryDate);
-          console.log(user.uid);
-          firebase.database().ref('users/'+user.uid).update( {
-            "foodName": foodName,
-            "expirydate": expirydate
-          });
-       });
-       window.location.href="foodinput.html";
-   };
-   var database = firebase.database();
-   </script>
-<script>
-    
-    <button id="remove" onclick="myFunction1()">-</button>
-    <br />
-<<<<<<< HEAD
-	</script>
-=======
-	
-	
-	
-	
-	
->>>>>>> 334589c73f91c58be64caf406680dca381bb8a1e
+    <form id="mySelect" multiple="multiple">
+
+
+        foodName : <select>
+            option1:
+            <option value="milk" id="milk" selected="selected">Milk</option>
+            option2:
+            <option value="yogurt" id="yogurt" selected="selected">Yogurt</option>
+            option3:
+            <option value="cheese" id="cheese" selected="selected">Cheese</option>
+            option4:
+            <option value="butter" id="butter" selected="selected">Butter</option>
+            option5:
+            <option value="pudding" id="pudding" selected="selected">Pudding</option>
+            option6:
+            <option value="cream" id="cream" selected="selected">Cream</option>
+        </select>
+        <button id="add" onclick="myFunction1()">+</button>
+    </form>
+    <form id="date">
+        Expiry Date : <input type="date" id="date" name="date" />
+        <button id="save_button">SAVE</button>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+
     <script>
-	
-	
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAisdo7nPzUK3LSijFnqml9YX6UVLNFwOQ",
+            authDomain: "nov-15.firebaseapp.com",
+            databaseURL: "https://nov-15.firebaseio.com",
+            projectId: "nov-15",
+            storageBucket: "nov-15.appspot.com",
+            messagingSenderId: "665129756269"
+        };
+        firebase.initializeApp(config);
 
-	
-	(function(){
+        var rootRef = firebase.database().ref().child('foods');
+        $('#save_button').click(function () {
+            rootRef.push({
+                var options = {};
 
-    var firebase = app_firebase;
+                $('#mySelect option').each(function() {
+                    options[$(this).text()] = $(this).val();
+                });
 
-    // for the currently authenticated firebase user
-    // create your own "user" node in the datebase using 
-    // the firebase generated "uid"
+            console.log(options);
 
-    firebase.auth().onAuthStateChanged(function(user){
-        firebase.database().ref("users/"+user.uid).update(
-	{
-         "name":user.displayName, 
-         "email":user.email
-        });
-    });
-})()
+            //or the other way round
 
-	
-	
-        document.getElementById("add").addEventListener("click", storeList);
-	</script>
+            var options2 = {};
+
+            $('#mySelect option').each(function () {
+                options2[$(this).val()] = $(this).text();
+            });
+
+            console.log(options2);
+
+
+                }
+                expiryDate: $('#date').val()
+            });
+        })
+
+    </script>
+
     <script>
-            document.getElementById("remove").addEventListener("click", removeList);
-        function removeList() {
-            alert("remove");
-        }
-      
+        $("#add").click(myFunction1(){
+            foodName: <select>
+                option1:
+                <option value="milk" id="milk" selected="selected">Milk</option>,
+                    option2:
+                <option value="yogurt" id="yogurt" selected="selected">Yogurt</option>,
+                    option3:
+                <option value="cheese" id="cheese"  selected="selected">Cheese</option>,
+                    option4:
+                <option value="butter" id="butter" selected="selected">Butter</option>,
+                    option5:
+                <option value="pudding" id="pudding" selected="selected">Pudding</option>,
+                    option6:
+                <option value="cream" id="cream" selected="selected">Cream</option>,
+            </select>
+                <button id="add" onclick="myFunction1()">+</button>
+                
+                <form id="date">
+                    Expiry Date : <input type="date" id="date" name="date" />
+                    });
+            </form>
+    </script>
+
+
+    <script>
+      /*  document.getElementById('select').addEventListener('add', submitForm);
+         function submitForm(e) {
+             e.preventDefault();
+             var foodName = document.getElementById("foodName").value;
+             var expiryDate = document.getElementById("expiryDate").value;
+             //console.log(set);
+             //console.log(interest);
+             var firebase = app_firebase:
+             firebase.auth().onAuthStateChanged(function(user){
+                console.log(foodName);
+                console.log(expiryDate);
+                console.log(user.uid);
+                firebase.database().ref('users/'+user.uid).update( {
+                  "foodName": foodName,
+                  "expirydate": expirydate
+                });
+             });
+             window.location.href="foodinput.html";
+         };
+         var database = firebase.database();*/
+    </script>
+    <script>
+
+        < button id="remove" onclick="myFunction1()" > -</button >
+        <br />
+
     </script>
 
 
 
 
 
-   <script src="setup_firebase.js"></script>
-
-
-    <form action="/action_page.php" method="get">
-
-
-        <button type="submit" formaction="foodinput.html">Save & Submit</button>
-    </form>
-
-
-    
-</form>
 
 
 
 
-<script>
-
-function goBack() {
-window.history.back();
-}
 
 
 
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
