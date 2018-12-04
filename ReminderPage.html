@@ -44,6 +44,7 @@
         <img id=logo src="./Group 4.png">
     </header>
     <div1>
+<!--
         <fieldset>
             <legend><b>UserName's list</b></legend>
             <ol>
@@ -69,6 +70,7 @@
 
             </ol>
         </fieldset>
+-->
     </div1>
 
     <button id="go_back" onclick="goBack()">Go Back</button>
@@ -115,11 +117,41 @@
 
           for(var i = 0; i<keys.length; i++){
             var k = keys[i];
-            var foodN = food[k].foodName;
-            var expiryD = food[k].ExpiryDate;
-            console.log(foodN, expiryD);
+              var foodN = food[k].foodName;
+              var expiryD = food[k].ExpiryDate;
+//            console.log(foodN, expiryD);
+              
+              var now = new Date().valueOf();
+              
+              var temp = expiryD.split("/");
+              console.log(temp);
+              var time = new Date(temp[1]+"/"+ temp[0]+"/"+temp[2]);
+              console.log(now);
+              
+              console.log(expiryD);
+              console.log(time);
+              
+           var output = document.createElement('div') ;
+              output.innerHTML = "Food Name: " + foodN + "<br/>"
+                               + "Expiry Date: " + expiryD + "<br/>" ;
+              document.body.appendChild(output);
+
+              if(now < time){
+                  console.log(now -time);
+                  var dateOutput = document.createElement('div');
+                  var daystogo = Math.round(((time - now)/86400000))  ;
+                  dateOutput.innerHTML = daystogo + " Days to go!" + "<br/>";
+                  document.body.appendChild(dateOutput);
+              }else {
+                  console.log("called");
+                  var dateOutput2 = document.createElement('div');
+                  var dayspast = Math.round(((now - time))/86400000);
+                  dateOutput2.innerHTML = dayspast  + " Days past!" + "<br/>";
+                  document.body.appendChild(dateOutput2);
+              }
           }
         }
+        
 var food = foodN
         function errData(err){
           console.log('Error!');
