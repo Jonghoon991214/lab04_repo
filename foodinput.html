@@ -11,17 +11,62 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 </head>
+<style>
+       body {
+           background-color: pink;
+       }
 
+       #logo {
+           float: left;
+           position: absolute;
+           left: 40%;
+           margin-top: 0%;
+       }
+
+       #text1 {
+           float: left;
+           position: absolute;
+           left: 40%;
+           margin-top: 17%;
+           font-size: 50px;
+       }
+
+       #selection {
+           float: left;
+           position: absolute;
+           left: 40%;
+           top: 50%;
+           font-size: 33px;
+           color : blueviolet;
+       }
+       #Reminder {
+           float: left;
+           position: absolute;
+           left: 40%;
+           top:70%;
+
+       }
+       #save_button, .button {
+           padding: 13px 13px;
+           font-size: 22px;
+           float: left;
+           position: absolute;
+       }
+   </style>
 
 
 <body>
+<header>
+       <img id="logo" src="Group 4.png" />
+
+   </header>
     <script src="setup_firebase.js"></script>
     <button onclick="goBack()">Go Back</button>
 
-    <h1>Input your food here! </h1>
+    <h1 id="text1">Input your food here! </h1>
 
 
-
+<div id="selection">
     <select id="mySelect">
         foodName :
 
@@ -44,6 +89,10 @@
         <input type="date" id="myDate" />
  </form>
     <button id="save_button">SAVE</button>
+	</div>
+	<div id="Reminder">
+       <button class="button" type="submit" onclick="window.location.href='ReminderPage.html'">Reminder Page</button>
+   </div>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 
     <script>
