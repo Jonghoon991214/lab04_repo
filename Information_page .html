@@ -13,7 +13,7 @@
             width: 250px;
             height: auto;
         }
-        
+
 
         /* The Modal (background) */
         .popup {
@@ -74,28 +74,28 @@
     <button onclick="goBack()">Go Back</button>
 
     <h1> Dairy products </h1>
-    
+
     <!--    //milk-->
     <img class="resize" src="milk.jpg" alt="Milk" onclick="openPopUp('milk')">
-    
+
     <!--    //cheese-->
     <img class="resize" src="cheese.png" alt="Cheese" onclick="openPopUp('cheese')">
-    
+
     <!--    //butter-->
     <img class="resize" src="butter.png" alt="Butter" onclick="openPopUp('butter')">
-    
+
     <!--    //yogurt-->
     <img class="resize" src="yogurt.jpg" alt="yogurt" onclick="openPopUp('yogurt')">
-    
+
     <!--    //cream-->
     <img class="resize" src="cream.png" alt="cream" onclick="openPopUp('cream')">
-    
+
     <!--    //ice cream-->
     <img class="resize1" src="ice_cream.png" alt="ice cream" onclick="openPopUp('ice_cream')">
-    
+
     <!--    //pudding-->
     <img class="resize" src="pudding.png" alt="pudding" onclick="openPopUp('pudding')">
-    
+
     <!--    //popup-->
     <div id="popup" class="popup">
         <!-- Modal content -->
@@ -117,8 +117,9 @@
         function goBack() {
             window.history.back();
         }
-            
+
         function openPopUp(productName) {
+
             var milk = ["Subtract the current date from the sell-by date, and add five", "Consume milk within 5-7 days by sell-dates", "Freeze milk to keep for a long time", "Tempurates well below 40 °F is necessary to protect milk quality"];
             var cheese = ["Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.", " 1-2 months in the fridge usually", "Use a fresh piece of plasstic wrap or wax paper to rewrap cheese after each use", "The recommended tempurate is 35 and 45 °F"];
             var butter = ["6-9 Months for the exipriary date", "It needs to be stored property as butter needs to be stay away from strong odors", "The Best temperature to leave butter is 70°F"];
@@ -128,7 +129,7 @@
             var pudding = [""];
 
             var description = [];
-            
+
             switch (productName) {
                 case "milk":
                     var description = milk;
@@ -153,9 +154,9 @@
                     break;
 
             }
-            
+            document.getElementById('productDescription').innerHTML = "";
             document.getElementById('productName').innerHTML = productName;
-            
+
             for (var i = 0; i < description.length; ++i) {
                 var item = document.createElement('li');
                 item.innerHTML = description[i];

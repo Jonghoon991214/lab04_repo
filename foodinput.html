@@ -39,10 +39,10 @@
     </select>
     <button id="add" onclick="myFunction1()">+</button>
 
-    <select id="date">
-        Expiry Date :
-        <input type="date" id="date" name="date" />
- </select>
+    <form id="mydate1">
+        ExpiryDate :
+        <input type="date" id="myDate" />
+ </form>
     <button id="save_button">SAVE</button>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 
@@ -62,10 +62,13 @@
         $('#save_button').click(function () {
             rootRef.push({
                 foodName: $("#mySelect option:selected").text(),
-                expiryDate : $("#date").text(),
 
-            });
+                ExpiryDate: $("#mydate1").date()
+                
+
+            }); 
         })
+      
 
     </script>
 
@@ -97,39 +100,13 @@
     </script>
     <script>
 
-<<<<<<< HEAD
-        < button id="remove" onclick="myFunction1()" > -</button >
-        <br/>
-=======
-        < button id = "remove" onclick = "myFunction1()" > -</button >
+
+       
+       
             <br />
->>>>>>> d4a6f18669c25080a4d6e7107ba984f0ccdf18e3
+
 
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
