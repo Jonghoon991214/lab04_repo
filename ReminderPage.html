@@ -5,21 +5,21 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="app.css" />
-<<<<<<< HEAD
+
 	<title>Reminder</title>
 	 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
 
-=======
+
     <title>Reminder</title>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
 </head>
->>>>>>> 47685ab019e6689cca23febdaf8556f647a9cffd
+
 <style>
     * { background-color : aliceblue;
         font-size : 19pt;
@@ -87,7 +87,7 @@
 
     </script>
     <script type="text/javascript" language="javascript">
-<<<<<<< HEAD
+
 
 
         var config = {
@@ -120,17 +120,16 @@
             console.log(foodN, expiryD);
           }
         }
-
+var food = foodN
         function errData(err){
           console.log('Error!');
           console.log(err);
         }
 
-=======
->>>>>>> 47685ab019e6689cca23febdaf8556f647a9cffd
+
         function CompareDate() {
             var today = new Date();
-            var date2 = new Date(expiryD);
+            var date2 = new Date(expiryDate);
             document.getElementById("date1").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date2.toLocaleDateString("en-US");
 
             var timeDiff = Math.abs(date2.getTime() - today.getTime());
@@ -193,9 +192,7 @@
 
     </script>
     <script type="text/javascript" language="javascript">
-<<<<<<< HEAD
 
-=======
         function CompareDate() {
             var today = new Date();
             var date5 = new Date('2018-11-25');
@@ -204,7 +201,7 @@
             //alert(date2.toLocaleDateString("en-US"));
             var timeDiff = Math.abs(date5.getTime() - today.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
->>>>>>> 47685ab019e6689cca23febdaf8556f647a9cffd
+
 
     function CompareDate() {
         var today = new Date();
@@ -223,13 +220,12 @@
             document.getElementById("R4").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
             $('#R4').css('color', 'red');
         }
-<<<<<<< HEAD
+
     }
     CompareDate();
-=======
+
         CompareDate();
 
->>>>>>> 47685ab019e6689cca23febdaf8556f647a9cffd
     </script>
 </body>
 
@@ -237,7 +233,7 @@
 
 
 <script>
-<<<<<<< HEAD
+
 //initialize firebase
 
     var ref = firebase.database.ref().child('update');
@@ -252,7 +248,7 @@
             }
         })
     })
-=======
+
     //initialize firebase
     $(document).ready(function() {
          // Initialize Firebase
@@ -281,5 +277,4 @@
         })
     })
 
->>>>>>> 47685ab019e6689cca23febdaf8556f647a9cffd
 </script>
