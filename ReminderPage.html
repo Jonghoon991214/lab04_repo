@@ -164,3 +164,21 @@ alert(taste);
     </script>
 </body>
 </html >
+
+
+<script>
+//initialize firebase
+    
+    var ref = firebase.database.ref().child('urdate');
+    
+    ref.on('value',function(snap){
+        snap.forEach(function(snapChild){
+            var x = snapchild.foodName;
+            
+            for(var i = 0; i < snapChild.length; i++){
+                document.body.appenChild(x);
+                //it will print a list of all foodNames in your database
+            }
+        })
+    })
+</script>
