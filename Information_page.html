@@ -91,7 +91,7 @@
     <img class="resize" src="cream.png" alt="cream" onclick="openPopUp('cream')">
 
     <!--    //ice cream-->
-    <img class="resize1" src="ice_cream.png" alt="ice cream" onclick="openPopUp('ice_cream')">
+    <img class="resize1" src="ice_cream.png" alt="ice cream" onclick="openPopUp('ice cream')">
 
     <!--    //pudding-->
     <img class="resize" src="pudding.png" alt="pudding" onclick="openPopUp('pudding')">
@@ -123,10 +123,10 @@
             var milk = ["Subtract the current date from the sell-by date, and add five", "Consume milk within 5-7 days by sell-dates", "Freeze milk to keep for a long time", "Tempurates well below 40 °F is necessary to protect milk quality"];
             var cheese = ["Depends on the kinds for cheese, however cheese can be kept in the freezer for 6-8 months.", " 1-2 months in the fridge usually", "Use a fresh piece of plasstic wrap or wax paper to rewrap cheese after each use", "The recommended tempurate is 35 and 45 °F"];
             var butter = ["6-9 Months for the exipriary date", "It needs to be stored property as butter needs to be stay away from strong odors", "The Best temperature to leave butter is 70°F"];
-            var yogurt = ["5 to 7 days after opening", "1 to 2 weeks after sell by date"];
-            var cream = [""];
-            var ice_cream = [""];
-            var pudding = [""];
+            var yogurt = ["5 to 7 days after opening", "1 to 2 weeks after sell by date", "The recommended temperature is 180 °F"];
+            var cream = ["The cream lasts one month longer after it is opened", "The recommended temperature is 35 to 50 °F"];
+            var ice_cream = ["The ice cream lasts 2 to 3 months unopened", "The ice cream lasts 1 to 2 months opened", "The recommended temperature should be at 6 to 10 °F"];
+            var pudding = ["Unopened pudding lasts 4-5 weeks", "Opened pudding lasts 1 Day in pantry, and 5-7 days in refrigerator"];
 
             var description = [];
 
@@ -146,7 +146,7 @@
                 case "cream":
                     var description = cream;
                     break;
-                case "ice_cream":
+                case "ice cream":
                     var description = ice_cream;
                     break;
                 case "pudding":
@@ -168,6 +168,7 @@
 
         function closePopUp() {
             popup.style.display = "none";
+            document.getElementById('productDescription').innerHTML = "";
         }
 
     </script>
