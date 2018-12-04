@@ -47,6 +47,10 @@
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 
     <script>
+        function goBack() {
+            window.history.back();
+        }
+
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyAisdo7nPzUK3LSijFnqml9YX6UVLNFwOQ",
@@ -59,13 +63,18 @@
         firebase.initializeApp(config);
 
         var rootRef = firebase.database().ref().child('foods');
-        $('#save_button').click(function () {
+        
+        $("#save_button").click(function () {
+            var name = $("#mySelect option:selected").text();
+            var temp = new Date($('#myDate').val());
+            day = temp.getDate();
+            month = temp.getMonth() + 1;
+            year = temp.getFullYear();
+            var date = [day, month, year].join('/');
+
             rootRef.push({
-                foodName: $("#mySelect option:selected").text(),
-
-                ExpiryDate: $("#mydate1").date()
-                
-
+                foodName: name,
+                ExpiryDate: date
             }); 
         })
       
@@ -80,6 +89,7 @@
         /*  document.getElementById('select').addEventListener('add', submitForm);
            function submitForm(e) {
                e.preventDefault();
+               
                var foodName = document.getElementById("foodName").value;
                var expiryDate = document.getElementById("expiryDate").value;
                //console.log(set);

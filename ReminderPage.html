@@ -1,14 +1,15 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="app.css" />
-	<title>Reminder</title>
-	 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>    
+    <title>Reminder</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-	
+
 </head>
 <style>
     * { background-color : aliceblue;
@@ -27,12 +28,12 @@
 		left: 10%;
 	}
 </style>
-</head>
+
 <body>
-<script src="setup_firebase.js"></script>
-<header>
-<img id = logo src = "./Group 4.png">
-</header>
+    <script src="setup_firebase.js"></script>
+    <header>
+        <img id=logo src="./Group 4.png">
+    </header>
     <div1>
         <fieldset>
             <legend><b>UserName's list</b></legend>
@@ -66,22 +67,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <script>
-    function goBack() {
+        function goBack() {
             window.history.back();
         }
+
     </script>
-<script>
-var taste = localStorage.getItem('milk');
-alert(taste);
+    <script>
+        //var taste = localStorage.getItem('milk');
+        //alert(taste);
 
-</script>
+    </script>
     <script type="text/javascript" language="javascript">
-
         function CompareDate() {
             var today = new Date();
             var date2 = new Date('2018-12-11');
             document.getElementById("date1").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date2.toLocaleDateString("en-US");
-           
+
             var timeDiff = Math.abs(date2.getTime() - today.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
@@ -94,10 +95,10 @@ alert(taste);
             }
         }
         CompareDate();
+
     </script>
 
     <script type="text/javascript" language="javascript">
-
         function CompareDate() {
             var today = new Date();
             var date3 = new Date('2018-8-11');
@@ -116,9 +117,9 @@ alert(taste);
             }
         }
         CompareDate();
+
     </script>
     <script type="text/javascript" language="javascript">
-
         function CompareDate() {
             var today = new Date();
             var date4 = new Date('2018-11-20');
@@ -139,9 +140,9 @@ alert(taste);
             }
         }
         CompareDate();
+
     </script>
     <script type="text/javascript" language="javascript">
-
         function CompareDate() {
             var today = new Date();
             var date5 = new Date('2018-11-25');
@@ -161,24 +162,40 @@ alert(taste);
             }
         }
         CompareDate();
+
     </script>
 </body>
-</html >
+
+</html>
 
 
 <script>
-//initialize firebase
-    
-    var ref = firebase.database.ref().child('urdate');
-    
-    ref.on('value',function(snap){
-        snap.forEach(function(snapChild){
-            var x = snapchild.foodName;
-            
-            for(var i = 0; i < snapChild.length; i++){
-                document.body.appenChild(x);
-                //it will print a list of all foodNames in your database
-            }
+    //initialize firebase
+    $(document).ready(function() {
+         // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAisdo7nPzUK3LSijFnqml9YX6UVLNFwOQ",
+            authDomain: "nov-15.firebaseapp.com",
+            databaseURL: "https://nov-15.firebaseio.com",
+            projectId: "nov-15",
+            storageBucket: "nov-15.appspot.com",
+            messagingSenderId: "665129756269"
+        };
+        firebase.initializeApp(config);
+        var ref = firebase.database().ref().child('foods');
+        ref.once('value').then(function(snap) {
+            snap.forEach(function(snapChild) {
+                var x = snapChild.val();
+                var foodname = x.foodName;
+                var expirationDate = x.ExpiryDate;
+                
+                
+                for (var i = 0; i < snap.length; i++) {
+                    document.body.appenChild(x);
+                    //it will print a list of all foodNames in your database
+                }
+            })
         })
     })
+
 </script>
