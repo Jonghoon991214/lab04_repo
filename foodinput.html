@@ -67,7 +67,7 @@
         $("#save_button").click(function () {
             var name = $("#mySelect option:selected").text();
             var temp = new Date($('#myDate').val());
-            day = temp.getDate();
+            day = temp.getDate() +1;
             month = temp.getMonth() + 1;
             year = temp.getFullYear();
             var date = [day, month, year].join('/');
