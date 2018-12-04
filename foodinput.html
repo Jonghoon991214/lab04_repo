@@ -22,29 +22,28 @@
 
 
 
-    <form id="mySelect" multiple="multiple">
+    <select id="mySelect">
+        foodName :
 
+        <option value="milk">Milk</option>
 
-        foodName : <select>
-            option1:
-            <option value="milk" id="milk" selected="selected">Milk</option>
-            option2:
-            <option value="yogurt" id="yogurt" selected="selected">Yogurt</option>
-            option3:
-            <option value="cheese" id="cheese" selected="selected">Cheese</option>
-            option4:
-            <option value="butter" id="butter" selected="selected">Butter</option>
-            option5:
-            <option value="pudding" id="pudding" selected="selected">Pudding</option>
-            option6:
-            <option value="cream" id="cream" selected="selected">Cream</option>
-        </select>
-        <button id="add" onclick="myFunction1()">+</button>
-    </form>
-    <form id="date">
-        Expiry Date : <input type="date" id="date" name="date" />
-        <button id="save_button">SAVE</button>
-    </form>
+        <option value="yogurt">Yogurt</option>
+
+        <option value="cheese">Cheese</option>
+
+        <option value="butter">Butter</option>
+
+        <option value="pudding">Pudding</option>
+
+        <option value="cream">Cream</option>
+    </select>
+    <button id="add" onclick="myFunction1()">+</button>
+
+    <select id="date">
+        Expiry Date :
+        <input type="date" id="date" name="date" />
+ </select>
+    <button id="save_button">SAVE</button>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 
     <script>
@@ -62,83 +61,49 @@
         var rootRef = firebase.database().ref().child('foods');
         $('#save_button').click(function () {
             rootRef.push({
-                var options = {};
-
-                $('#mySelect option').each(function() {
-                    options[$(this).text()] = $(this).val();
-                });
-
-            console.log(options);
-
-            //or the other way round
-
-            var options2 = {};
-
-            $('#mySelect option').each(function () {
-                options2[$(this).val()] = $(this).text();
-            });
-
-            console.log(options2);
+                foodName: $("#mySelect option:selected").text()
 
 
-                }
-                expiryDate: $('#date').val()
             });
         })
 
     </script>
 
-    <script>
-        $("#add").click(myFunction1(){
-            foodName: <select>
-                option1:
-                <option value="milk" id="milk" selected="selected">Milk</option>,
-                    option2:
-                <option value="yogurt" id="yogurt" selected="selected">Yogurt</option>,
-                    option3:
-                <option value="cheese" id="cheese"  selected="selected">Cheese</option>,
-                    option4:
-                <option value="butter" id="butter" selected="selected">Butter</option>,
-                    option5:
-                <option value="pudding" id="pudding" selected="selected">Pudding</option>,
-                    option6:
-                <option value="cream" id="cream" selected="selected">Cream</option>,
-            </select>
-                <button id="add" onclick="myFunction1()">+</button>
-                
-                <form id="date">
-                    Expiry Date : <input type="date" id="date" name="date" />
-                    });
-            </form>
-    </script>
+
+
 
 
     <script>
-      /*  document.getElementById('select').addEventListener('add', submitForm);
-         function submitForm(e) {
-             e.preventDefault();
-             var foodName = document.getElementById("foodName").value;
-             var expiryDate = document.getElementById("expiryDate").value;
-             //console.log(set);
-             //console.log(interest);
-             var firebase = app_firebase:
-             firebase.auth().onAuthStateChanged(function(user){
-                console.log(foodName);
-                console.log(expiryDate);
-                console.log(user.uid);
-                firebase.database().ref('users/'+user.uid).update( {
-                  "foodName": foodName,
-                  "expirydate": expirydate
-                });
-             });
-             window.location.href="foodinput.html";
-         };
-         var database = firebase.database();*/
+        /*  document.getElementById('select').addEventListener('add', submitForm);
+           function submitForm(e) {
+               e.preventDefault();
+               var foodName = document.getElementById("foodName").value;
+               var expiryDate = document.getElementById("expiryDate").value;
+               //console.log(set);
+               //console.log(interest);
+               var firebase = app_firebase:
+               firebase.auth().onAuthStateChanged(function(user){
+                  console.log(foodName);
+                  console.log(expiryDate);
+                  console.log(user.uid);
+                  firebase.database().ref('users/'+user.uid).update( {
+                    "foodName": foodName,
+                    "expirydate": expirydate
+                  });
+               });
+               window.location.href="foodinput.html";
+           };
+           var database = firebase.database();*/
     </script>
     <script>
 
+<<<<<<< HEAD
         < button id="remove" onclick="myFunction1()" > -</button >
         <br/>
+=======
+        < button id = "remove" onclick = "myFunction1()" > -</button >
+            <br />
+>>>>>>> d4a6f18669c25080a4d6e7107ba984f0ccdf18e3
 
     </script>
 
