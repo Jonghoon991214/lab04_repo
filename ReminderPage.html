@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="app.css" />
 	<title>Reminder</title>
-	 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>    
+	 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-	
-</head>
+
+
 <style>
     * { background-color : aliceblue;
         font-size : 19pt;
@@ -77,11 +77,48 @@ alert(taste);
 </script>
     <script type="text/javascript" language="javascript">
 
+
+        var config = {
+            apiKey: "AIzaSyAisdo7nPzUK3LSijFnqml9YX6UVLNFwOQ",
+            authDomain: "nov-15.firebaseapp.com",
+            databaseURL: "https://nov-15.firebaseio.com",
+            projectId: "nov-15",
+            storageBucket: "nov-15.appspot.com",
+            messagingSenderId: "665129756269"
+        };
+        firebase.initializeApp(config);
+        var rootRef = firebase.database().ref().child('foods');
+        rootRef.on('value', function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+              var childData = childSnapshot.val();
+            });
+        });
+
+        rootRef.on('value',gotData, errData);
+
+        function gotData(data){
+          //console.log(data.val());
+          var food = data.val();
+          var keys = Object.keys(food);
+
+          for(var i = 0; i<keys.length; i++){
+            var k = keys[i];
+            var foodN = food[k].foodName;
+            var expiryD = food[k].ExpiryDate;
+            console.log(foodN, expiryD);
+          }
+        }
+
+        function errData(err){
+          console.log('Error!');
+          console.log(err);
+        }
+
         function CompareDate() {
             var today = new Date();
-            var date2 = new Date('2018-12-11');
+            var date2 = new Date(expiryD);
             document.getElementById("date1").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date2.toLocaleDateString("en-US");
-           
+
             var timeDiff = Math.abs(date2.getTime() - today.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
@@ -142,25 +179,26 @@ alert(taste);
     </script>
     <script type="text/javascript" language="javascript">
 
-        function CompareDate() {
-            var today = new Date();
-            var date5 = new Date('2018-11-25');
-            document.getElementById("date4").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date5.toLocaleDateString("en-US");
-            //alert(date1.toLocaleDateString("en-US"));
-            //alert(date2.toLocaleDateString("en-US"));
-            var timeDiff = Math.abs(date5.getTime() - today.getTime());
-            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-            if (date5 - today >= 0) {
-                // document.getElementById("R1").innerHTML = diffDays;
-                document.getElementById("R4").innerHTML = "Remaining Day is: " + diffDays;
-                $('#R4').css('color', 'blue');
-            } else {
-                document.getElementById("R4").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
-                $('#R4').css('color', 'red');
-            }
+    function CompareDate() {
+        var today = new Date();
+        var date5 = new Date('2018-11-24');
+        document.getElementById("date4").innerHTML = "Expiry date is(mm/dd/yyyy):     " + date5.toLocaleDateString("en-US");
+        //alert(date1.toLocaleDateString("en-US"));
+        //alert(date2.toLocaleDateString("en-US"));
+        var timeDiff = Math.abs(date5.getTime() - today.getTime());
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        if (date5 - today >= 0) {
+            // document.getElementById("R1").innerHTML = diffDays;
+            document.getElementById("R4").innerHTML = "Remaining Day is: " + diffDays;
+            $('#R4').css('color', 'blue');
+        } else {
+            document.getElementById("R4").innerHTML = "Expiry date is " + diffDays + "days passed! You cannot Eat!!";
+            $('#R4').css('color', 'red');
         }
-        CompareDate();
+    }
+    CompareDate();
     </script>
 </body>
 </html >
@@ -168,13 +206,13 @@ alert(taste);
 
 <script>
 //initialize firebase
-    
-    var ref = firebase.database.ref().child('urdate');
-    
+
+    var ref = firebase.database.ref().child('update');
+
     ref.on('value',function(snap){
         snap.forEach(function(snapChild){
             var x = snapchild.foodName;
-            
+
             for(var i = 0; i < snapChild.length; i++){
                 document.body.appenChild(x);
                 //it will print a list of all foodNames in your database
