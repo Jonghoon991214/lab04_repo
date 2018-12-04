@@ -61,8 +61,8 @@
         var rootRef = firebase.database().ref().child('foods');
         $('#save_button').click(function () {
             rootRef.push({
-                foodName: $("#mySelect option:selected").text()
-
+                foodName: $("#mySelect option:selected").text(),
+                expiryDate : $("#date").text(),
 
             });
         })
